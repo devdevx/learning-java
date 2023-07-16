@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Execute Maven commands
+mvn validate

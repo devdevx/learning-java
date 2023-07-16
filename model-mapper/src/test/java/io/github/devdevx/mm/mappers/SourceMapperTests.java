@@ -5,7 +5,7 @@ import io.github.devdevx.mm.dtos.SubSourceOne;
 import io.github.devdevx.mm.dtos.TargetOne;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SourceMapperTests {
 

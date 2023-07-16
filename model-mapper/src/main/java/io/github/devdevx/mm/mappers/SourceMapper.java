@@ -20,23 +20,29 @@ public class SourceMapper {
     }
 
     private ModelMapper getFlatterMapper() {
-        if (flatterMapper != null) return flatterMapper;
+        if (flatterMapper != null) {
+            return flatterMapper;
+        }
         flatterMapper = new ModelMapper();
-        flatterMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE); // For subfields
+        flatterMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE); // For subfields
         return flatterMapper;
     }
 
     private ModelMapper getPartialUpdateMapper() {
-        if (partialUpdateMapper != null) return partialUpdateMapper;
+        if (partialUpdateMapper != null) {
+            return partialUpdateMapper;
+        }
         partialUpdateMapper = new ModelMapper();
-        partialUpdateMapper.getConfiguration()
+        partialUpdateMapper
+                .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE); // For subfields
-        partialUpdateMapper.createTypeMap(SourceOne.class, TargetOne.class) // For ignored fields
-                .addMappings(m -> {
-                    m.skip(TargetOne::setValueOne);
-                    m.skip(TargetOne::setValueFour);
-                });
+        partialUpdateMapper
+                .createTypeMap(SourceOne.class, TargetOne.class) // For ignored fields
+                .addMappings(
+                        m -> {
+                            m.skip(TargetOne::setValueOne);
+                            m.skip(TargetOne::setValueFour);
+                        });
         return partialUpdateMapper;
     }
 }
